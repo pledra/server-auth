@@ -144,6 +144,10 @@ class AuthSamlProvider(models.Model):
             limit=1,
         )
 
+        attachment_location = self.env["ir.config_parameter"].sudo().get_param(
+            "ir_attachment.location", "file")
+        if attachment_location != 'file':
+            keys._save_to_file_system()
         keys_path = self.env["ir.attachment"]._full_path(keys.store_fname)
 
         settings = {
@@ -285,6 +289,13 @@ class AuthSamlProvider(models.Model):
             limit=1,
         )
 
+<<<<<<< HEAD
+=======
+        attachment_location = self.env["ir.config_parameter"].sudo().get_param(
+            "ir_attachment.location", "file")
+        if attachment_location != 'file':
+            keys._save_to_file_system()
+>>>>>>> elbati/12.0-auth_saml-pysaml
         keys_path = self.env["ir.attachment"]._full_path(keys.store_fname)
 
         sp_config = self._get_config_for_provider()

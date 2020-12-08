@@ -9,9 +9,16 @@
     "author": "XCG Consulting, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/server-auth",
     "license": "AGPL-3",
-    "depends": ["base_setup", "web"],
-    "external_dependencies": {"python": ["saml2"]},
-    "demo": [],
+    "depends": [
+        "base_setup",
+        "web",
+    ],
+    "external_dependencies": {
+        "python": ["saml2"],
+    },
+    "demo": [
+        "demo/auth_saml.xml",
+    ],
     "data": [
         "security/ir.model.access.csv",
         "views/auth_saml.xml",
