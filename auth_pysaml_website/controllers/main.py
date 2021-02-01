@@ -1,0 +1,18 @@
+# Copyright (C) 2020 GlodoUK <https://www.glodo.uk/>
+
+from odoo.http import request
+
+from odoo.addons.web.controllers.main import Home
+
+
+class SAMLLogin(Home):
+    def _list_saml_providers_domain(self):
+        website_id = getattr(request, "website", None)
+        if website_id:
+            return [
+                "|",
+                ("website_ids.id", "=", website_id.id),
+                ("website_ids", "=", False),
+            ]
+
+        return super(SAMLLogin, self)._list_saml_providers_domain()
