@@ -125,7 +125,7 @@ class ResUser(models.Model):
         # return user credentials
         return self.env.cr.dbname, login, saml_response
 
-    def _check_credentials(self, token):
+    def _check_credentials(self, token, env = False):
         """Override to handle SAML auths.
 
         The token can be a password if the user has used the normal form...
@@ -134,7 +134,7 @@ class ResUser(models.Model):
         """
         try:
             # Attempt a regular login (via other auth addons) first.
-            super(ResUser, self)._check_credentials(token)
+            super(ResUser, self)._check_credentials(token, env)
 
         except (AccessDenied, passlib.exc.PasswordSizeError):
             # since normal auth did not succeed we now try to find if the user
