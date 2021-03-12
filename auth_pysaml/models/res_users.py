@@ -125,7 +125,7 @@ class ResUser(models.Model):
         # return user credentials
         return self.env.cr.dbname, login, saml_response
 
-    def _check_credentials(self, token, env = False):
+    def _check_credentials(self, token, env=False):
         """Override to handle SAML auths.
 
         The token can be a password if the user has used the normal form...
