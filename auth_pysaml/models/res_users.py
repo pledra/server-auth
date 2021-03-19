@@ -135,12 +135,17 @@ class ResUser(models.Model):
 
     def _autoremove_password_if_saml(self):
         """Helper to remove password if it is forbidden for SAML users."""
+        if self.env.context.get("auth_saml_no_autoremove_password"):
+            return
         if self._allow_saml_and_password():
             return
         to_remove_password = self.filtered(
             lambda rec: rec.id != SUPERUSER_ID and rec.saml_ids and rec.password
         )
-        to_remove_password.write({"password": False})
+        if to_remove_password:
+            to_remove_password.with_context(
+                auth_saml_no_autoremove_password=True
+            ).write({"password": False})
 
     def write(self, vals):
         result = super().write(vals)
