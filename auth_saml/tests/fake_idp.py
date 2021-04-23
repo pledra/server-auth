@@ -23,7 +23,7 @@ CONFIG = {
     "name": "Rolands IdP",
     "service": {
         "aa": {
-            "endpoints": {"attribute_service": [("%s/aap" % BASE, BINDING_HTTP_POST),]},
+            "endpoints": {"attribute_service": [("%s/aap" % BASE, BINDING_HTTP_POST)]},
         },
         "aq": {
             "endpoints": {
