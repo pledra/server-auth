@@ -171,7 +171,7 @@ class AuthSamlProvider(models.Model):
                     "allow_unsolicited": False,
                     "authn_requests_signed": True,
                     "logout_requests_signed": True,
-                    "want_assertions_signed": True,
+                    "want_assertions_signed": False,
                     "want_response_signed": False,
                 },
             },
