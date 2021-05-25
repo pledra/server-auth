@@ -172,7 +172,7 @@ class AuthSamlProvider(models.Model):
                     "authn_requests_signed": True,
                     "logout_requests_signed": True,
                     "want_assertions_signed": True,
-                    "want_response_signed": True,
+                    "want_response_signed": False,
                 },
             },
             "cert_file": keys_path,
