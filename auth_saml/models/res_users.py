@@ -186,7 +186,7 @@ class ResUser(models.Model):
         # workaround for Odoo not seeing the newly created auth_saml.token on
         # the very first login
         model_token = self.env["auth_saml.token"].sudo()
-        for record in self.filtered(lambda r: r.saml_ids):
+        for record in self.sudo().filtered(lambda r: r.saml_ids):
             for provider in record.saml_ids:
                 token = model_token.search(
                     [
