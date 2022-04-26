@@ -224,6 +224,7 @@ class AuthSAMLController(http.Controller):
                     url = "/#action=%s" % action
                 elif menu:
                     url = "/#menu_id=%s" % menu
+                cr.commit()
                 return login_and_redirect(*credentials, redirect_url=url)
 
             except odoo.exceptions.AccessDenied:

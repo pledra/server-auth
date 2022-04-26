@@ -53,6 +53,7 @@ class ResUser(models.Model):
             # Update the token. Need to be committed, otherwise the token is not visible
             # to other envs, like the one used in login_and_redirect
             user_saml.with_env(new_env).write({"saml_access_token": saml_response})
+            new_cr.commit()
 
         if validation.get("mapped_attrs", {}):
             user.write(validation.get("mapped_attrs", {}))
